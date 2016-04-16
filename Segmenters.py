@@ -1,4 +1,6 @@
 from Image import Image
+
+#######################################################################################################################
 class Segmenter:
 
 	def getCurrentSegment(self):
@@ -13,8 +15,11 @@ class Segmenter:
 	def resetTrajectory(self):
 		pass
 
+
+#######################################################################################################################
 class RectangularSegmenter(Segmenter):
 
+# --------------------------------------------------------------------------
 	def __init__(self, PILImage, heightRectangle, widthRectangle, trajectory, lstPreprocessing = []):
 
 		self.image = PILImage
@@ -29,6 +34,7 @@ class RectangularSegmenter(Segmenter):
 	def hasNextSegment(self):
 		return self.trajectory.hasNextPosition()
 
+# --------------------------------------------------------------------------
 	def getCurrentSegment(self):
 
 		centerCorner = self.trajectory.getPosition()
@@ -46,7 +52,7 @@ class RectangularSegmenter(Segmenter):
 
 		return Image(centerCorner[0], centerCorner[1], cutout)
 
-
+#--------------------------------------------------------------------------
 	def getNextSegment(self):
 
 		if(not self.hasNextSegment()):
@@ -67,8 +73,4 @@ class RectangularSegmenter(Segmenter):
 
 		return Image(centerCorner[0], centerCorner[1], cutout)
 
-
-
-
-
-
+#######################################################################################################################
